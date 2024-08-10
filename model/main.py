@@ -1,5 +1,5 @@
 from playwright.async_api import async_playwright
-from func import *
+from .func import *
 import asyncio
 def download_video(base_url):
     p_id=base_url.split('/')[-1].split('.')[0]

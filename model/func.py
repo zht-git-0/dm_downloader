@@ -44,7 +44,7 @@ def get_video_list(urls,title):
         pool.acquire()
     for t in ts:
         t.join()
-def get_base_url(s):
+def get_base_url(s,page):
     headers = {
     "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
     "accept-encoding": "gzip, deflate, br, zstd",
@@ -61,7 +61,7 @@ def get_base_url(s):
     "upgrade-insecure-requests": "1",
     "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36 Edg/127.0.0.0"
     }   
-    url=f'https://www.295yhw.com/search/{s}----------1---.html'
+    url=f'https://www.295yhw.com/search/{s}----------{page}---.html'
     res=requests.get(url,headers=headers)
     with open('1.html','wb') as f:
         f.write(res.content)
