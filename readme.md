@@ -33,5 +33,6 @@
     ```bash
     start.bat
     ```
-点击按钮开始下载
+点击搜索结果中的按钮开始下载
+存在ans中
 ![运行结果](img/introduce.png)
