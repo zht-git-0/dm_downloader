@@ -16,18 +16,18 @@
     git clone https://github.com/zht-git-0/dm_downloader
     cd dm_downloader
     ```
-    **requirements.txt**:
+
+2. **安装依赖**：
+    ```bash
+    venv.bat
+    ```
+    **包含requirements.txt**:
     ```bash
     lxml==4.9.1
     playwright==1.45.1
     PyQt5==5.15.11
     PyQt5_sip==12.15.0
     Requests==2.32.3
-    ```
-
-2. **安装依赖**：
-    ```bash
-    venv.bat
     ```
 3. **运行程序**：
     ```bash
