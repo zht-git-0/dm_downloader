@@ -9,8 +9,8 @@
 
 ## 安装
 
-要安装动漫下载器，你需要在系统上安装 Python 3.9+ 和 `pip`。请按照以下步骤操作：
-
+要安装动漫下载器，你需要在系统上安装 Python 3.9+ 和 `pip`。请按照以下步骤操作：<br>
+**PS**:安装均在虚拟环境中进行<br>
 1. **克隆仓库**：
     ```bash
     git clone https://github.com/zht-git-0/dm_downloader
@@ -21,7 +21,7 @@
     ```bash
     venv.bat
     ```
-    **包含requirements.txt**:
+    **包含安装requirements.txt**:
     ```bash
     lxml==4.9.1
     playwright==1.45.1
@@ -29,12 +29,12 @@
     PyQt5_sip==12.15.0
     Requests==2.32.3
     ```
-    这是正常结果
+    这是正常结果<br>
     ![运行结果](img/finish.png)
 3. **运行程序**：
     ```bash
     start.bat
     ```
-点击搜索结果中的按钮开始下载
-存在ans中
+点击搜索结果中的按钮开始下载<br>
+结果存在ans中<br>
 ![运行结果](img/introduce.png)
