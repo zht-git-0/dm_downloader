@@ -25,5 +25,5 @@
     ```bash
     start.bat
     ```
-![运行结果](img/introduce.png)
 点击按钮开始下载
+![运行结果](img/introduce.png)
