@@ -29,6 +29,7 @@
     PyQt5_sip==12.15.0
     Requests==2.32.3
     ```
+    这是正常结果
     ![运行结果](img/finish.png)
 3. **运行程序**：
     ```bash
