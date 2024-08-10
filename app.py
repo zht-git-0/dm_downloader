@@ -1,10 +1,9 @@
-import Ui_window
 from PyQt5 import QtCore, QtGui, QtWidgets, sip
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QFontMetrics, QIcon
 from PyQt5.QtWidgets import *
 import sys
-from model import func,main
+from model import func,main,Ui_window
 import threading
 import os
 os.environ['QT_QPA_PLATFORM_PLUGIN_PATH'] = r'./.venv/Lib/site-packages/PyQt5/Qt5/plugins/platforms'
