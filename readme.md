@@ -19,5 +19,10 @@
 
 2. **安装依赖**：
     ```bash
-    pip install -r requirements.txt
+    venv.bat
     ```
+3. **运行程序**：
+    ```bash
+    start.bat
+    ```
+
