@@ -20,6 +20,7 @@ def search(txt,p=1):
     if txt=="":
         return
     data=func.get_base_url(txt,p)
+    print(data)
     widget=QWidget()#创建widget
     layout = QGridLayout()#创建布局
     widget.setLayout(layout)
