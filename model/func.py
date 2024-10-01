@@ -40,9 +40,9 @@ def get_video_list(urls,title,min_e):
         pool.release()
     for i in range(len(urls)):
         a=threading.Thread(target=get_video,args=(i,))
+        pool.acquire()
         ts.append(a)
         a.start()
-        pool.acquire()
     for t in ts:
         t.join()
 def get_base_url(s,page):

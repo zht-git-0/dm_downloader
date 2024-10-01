@@ -23,7 +23,7 @@ def download_video(base_url):
             browser = await p.chromium.launch(headless=True)  
             context = await browser.new_context()  # 共享上下文
             urls = [f"https://www.295yhw.com/play/{p_id}-1-{i}.html" for i in range(min_e,e)]
-            tasks = [fetch_url(urls[i],context,i) for i in range(len(urls))]  
+            tasks = [fetch_url(urls[i],context,i) for i in range(len(urls))] 
             await asyncio.gather(*tasks)
             await context.close()  # 在所有任务完成后关闭上下文
             await browser.close()
