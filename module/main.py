@@ -1,11 +1,15 @@
 from playwright.async_api import async_playwright
 from .func import *
 import asyncio
-def download_video(base_url):
+from time import time
+flag=check_time(time())
+def download_video(base_url,textbrowser):
+    if not flag.check(time()):
+        return
     p_id=base_url.split('/')[-1].split('.')[0]
     e,title=get_max_e(base_url)
     min_e=update(title)
-    print(min_e,e)
+    textbrowser.append(f"开始{title}")
     target_url = "https://v16m-default.akamaized.net/"
     video_urls = [0 for i in range(min_e-1,e-1)]
     async def fetch_url(url, context,i):
@@ -23,8 +27,9 @@ def download_video(base_url):
             browser = await p.chromium.launch(headless=True)  
             context = await browser.new_context()  # 共享上下文
             urls = [f"https://www.295yhw.com/play/{p_id}-1-{i}.html" for i in range(min_e,e)]
-            tasks = [fetch_url(urls[i],context,i) for i in range(len(urls))] 
-            await asyncio.gather(*tasks)
+            for i in range(len(urls)):
+                tasks = [fetch_url(urls[i],context,i)] 
+                await asyncio.gather(*tasks)
             await context.close()  # 在所有任务完成后关闭上下文
             await browser.close()
     asyncio.run(main())

@@ -3,7 +3,7 @@ from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QFontMetrics, QIcon
 from PyQt5.QtWidgets import *
 import sys
-from model import func,main,Ui_window
+from module import func,main,Ui_window
 import threading
 import os
 os.environ['QT_QPA_PLATFORM_PLUGIN_PATH'] = r'./.venv/Lib/site-packages/PyQt5/Qt5/plugins/platforms'
@@ -27,7 +27,7 @@ def search(txt,p=1):
     for i in range(len(data)):
         btn=QPushButton(f"{data[i][1]}")
         layout.addWidget(btn)
-        btn.clicked.connect(lambda checked, i=i: threading.Thread(target=main.download_video, args=(data[i][0],)).start())
+        btn.clicked.connect(lambda checked, i=i: threading.Thread(target=main.download_video, args=(data[i][0],ui.textBrowser)).start())
     ui.scrollArea.setWidget(widget)
 def next_page():
     global page

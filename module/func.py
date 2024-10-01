@@ -4,6 +4,15 @@ import re
 import os
 import threading
 pool=threading.BoundedSemaphore(5)
+class check_time:
+    def __init__(self,p_time):
+        self.p_time=p_time
+    def check(self,q_time):
+        flag=False
+        if q_time-self.p_time>0.2:
+            flag=not flag
+        self.p_time=q_time
+        return flag
 def get_max_e(url):
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36'
