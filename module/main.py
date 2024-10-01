@@ -9,7 +9,7 @@ def download_video(base_url,textbrowser):
     p_id=base_url.split('/')[-1].split('.')[0]
     e,title=get_max_e(base_url)
     min_e=update(title)
-    textbrowser.append(f"开始{title}")
+    textbrowser.append(f"开始下载{title}")
     target_url = "https://v16m-default.akamaized.net/"
     video_urls = [0 for i in range(min_e-1,e-1)]
     async def fetch_url(url, context,i):
@@ -34,4 +34,4 @@ def download_video(base_url,textbrowser):
             await browser.close()
     asyncio.run(main())
     get_video_list(video_urls,title,min_e)
-    print(title+"下载完成")
+    textbrowser.append(f"下载完成{title}")

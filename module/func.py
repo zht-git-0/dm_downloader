@@ -3,7 +3,7 @@ from lxml import etree
 import re
 import os
 import threading
-pool=threading.BoundedSemaphore(5)
+pool=threading.BoundedSemaphore(1)
 class check_time:
     def __init__(self,p_time):
         self.p_time=p_time

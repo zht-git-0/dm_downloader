@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'd:\python\脚本\动漫\dm_downloader\model\window.ui'
+# Form implementation generated from reading ui file 'd:\python\脚本\动漫\dm_downloader\module\window.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.10
 #
@@ -63,6 +63,9 @@ class Ui_MainWindow(object):
         self.horizontalLayout_2.addWidget(self.pushButton_3)
         self.verticalLayout_2.addLayout(self.horizontalLayout_2)
         self.textBrowser = QtWidgets.QTextBrowser(self.splitter)
+        font = QtGui.QFont()
+        font.setPointSize(16)
+        self.textBrowser.setFont(font)
         self.textBrowser.setObjectName("textBrowser")
         MainWindow.setCentralWidget(self.centralwidget)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
