@@ -1,3 +1,3 @@
 @echo off
 call .venv\Scripts\activate
-python app.py
+start "" pythonw app.py

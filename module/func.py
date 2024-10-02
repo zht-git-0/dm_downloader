@@ -3,7 +3,9 @@ from lxml import etree
 import re
 import os
 import threading
+from PyQt5.QtGui import QTextCursor
 pool=threading.BoundedSemaphore(1)
+lastx=0
 class check_time:
     def __init__(self,p_time):
         self.p_time=p_time
@@ -30,11 +32,46 @@ def get_max_e(url):
             max_e=e
             break
     return max_e+1,title
-def print_list(lis):
-    print('[')
-    for i in range(len(lis)):
-        print(f"'{lis[i]}'")
-    print(']')
+def get_video(url,title,min_e,i,textbrowser,cursor):
+    global lastx
+    headers = {
+    "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+    "accept-encoding": "gzip, deflate, br, zstd",
+    "accept-language": "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6",
+    "cache-control": "max-age=0",
+    "connection": "keep-alive",
+    "host": "v16m-default.akamaized.net",
+    "sec-ch-ua": '"Not)A;Brand";v="99", "Microsoft Edge";v="127", "Chromium";v="127"',
+    "sec-ch-ua-mobile": "?0",
+    "sec-ch-ua-platform": '"Windows"',
+    "sec-fetch-dest": "document",
+    "sec-fetch-mode": "navigate",
+    "sec-fetch-site": "none",
+    "sec-fetch-user": "?1",
+    "upgrade-insecure-requests": "1",
+    "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36 Edg/127.0.0.0"
+    }
+    os.makedirs(f'ans/{title}',exist_ok=True)
+    res=requests.get(url,headers=headers,stream=True)
+    size=int(res.headers['Content-Length'])//(2**20*10)
+    j=1
+    f=open(f'ans/{title}/第{min_e+i}集.mp4','wb')
+    textbrowser.append(f'下载进度0%');lastx=0
+    for data in res.iter_content(chunk_size=2**20*10):
+        f.write(data)
+        x=j*100//size
+        if x<100:
+            cursor.movePosition(QTextCursor.Left, QTextCursor.KeepAnchor, len(str(lastx))+1)
+            cursor.removeSelectedText()
+            cursor.insertText(f'{x}%')
+            textbrowser.setTextCursor(cursor)
+            lastx=x
+        j+=1
+    f.close()
+    cursor.movePosition(QTextCursor.Left, QTextCursor.KeepAnchor, len(str(lastx))+6)
+    cursor.removeSelectedText()
+    textbrowser.setTextCursor(cursor)
+    cursor.insertHtml(f'<br>第{min_e+i}集下载完成')
 def get_video_list(urls,title,min_e):
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36'
