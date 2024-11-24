@@ -3,6 +3,7 @@ from PyQt5.QtCore import Qt, QMetaType
 from PyQt5.QtWidgets import QMainWindow, QApplication, QWidget, QPushButton, QGridLayout
 import sys
 from module import func
+from module import Ui_window
 from module.main import download_video
 import threading
 from typing import List, Tuple
